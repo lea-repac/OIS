@@ -1,0 +1,60 @@
+<link rel="stylesheet" type="text/css" href="slogi/informativni.css"/>
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="container">
+                <h3><i class="fa-solid fa-person-walking-arrow-loop-left"></i>Prijavljeni uporabniki
+                    ({{seznamStrank.length}})</h3>
+                <ul>
+                    <li value="{{stranka.enolicniIdentifikator}}">
+                        {{#each seznamStrank as |stranka|}}
+                            {{stranka.podatek}}
+                        {{/each}}
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <div class="container">
+                <h3><i class="fa-regular fa-pen-to-square"></i>Priprava na ogled</h3>
+                <p>Število skupin:
+                    <input id="skupine" type="number" min="0" max="100" step="1" value="0"/>
+                </p>
+                <p>Izbrane učilnice: <span id="izbrane-ucilnice"></span></p>
+            </div>
+            <hr>
+            <div class="container">
+                <button id="ogled-dogodkov-gumb" type="button" class="btn btn-success btn-sm mt-3">
+                    <i class="fa-solid fa-shoe-prints"></i>Začni ogled dogodkov
+                </button>
+            </div>
+            <hr>
+            <div class="container">
+                <h3><i class="fa-solid fa-robot"></i>Obiskani dogodki?</h3>
+                <table id="tabela-obiskanih-dogodkov">
+                    <tr>
+                        <th class="crta-desno">prostor</th>
+                        <th class="crta-desno">ime dogodka</th>
+                        <th>spletno mesto</th>
+                    </tr>
+                    {{#each dogodki as |dogodek|}}
+                        <tr class="{{dogodek.prostor}}">
+                            <td>{{dogodek.prostor}}</td>
+                            <td>{{dogodek.ime_dogodka}}</td>
+                            <td><a href="{{dogodek.spletno_mesto}}" target="_blank">URL</a></td>
+                        </tr>
+                    {{/each}}
+
+                </table>
+            </div>
+
+        </div>
+        <div id="nacrt" class="col-md-8">
+            <label class="napotek">٩(- ̮̮̃-̃)۶ Prosimo, izberite vsaj eno učilnico
+            </label>
+        </div>
+    </div>
+</div>
+
+<script src="skripte/svg.min.js"></script>
+<script src="skripte/informativni.js"></script>
