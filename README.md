@@ -6,7 +6,8 @@ Za lažje razumevanje vaj si poglejte priprave na vaje iz predavanj [P6 → V6 S
 
 ## Vzpostavitev okolja
 
-Na voljo je Node.js **spletna trgovina e-Pesmi**, predstavljena na predavanjih P6 &rarr; V6 [Seja, košarica, XML in e-SLOG](https://teaching.lavbic.net/OIS/2024-2025/P6-V6.html#P6-V6). Z uporabo funkcije _Fork_ ustvarite lastno kopijo repozitorija, v okviru katerega boste opravljali vaje, in si ga prenesite v svoje lokalno razvojno okolje. V okviru vaj popravite in dopolnite obstoječo implementacijo spletne trgovine, kot zahtevajo navodila. Med delom smiselno uveljavljajte spremembe v lokalnem in oddaljenem repozitoriju!
+Na voljo je Node.js **spletna trgovina e-Pesmi**, predstavljena na predavanjih P6 &rarr; V6 [Seja, košarica, XML in e-SLOG](https://teaching.lavbic.net/OIS/2024-2025/P6-V6.html#P6-V6). Spletna aplikacija se povezuje do podatkovne
+baze [Chinook](https://m-soro.github.io/Business-Analytics/SQL-for-Data-Analysis/L4-Project-Query-Music-Store/). Z uporabo funkcije _Fork_ ustvarite lastno kopijo repozitorija, v okviru katerega boste opravljali vaje, in si ga prenesite v svoje lokalno razvojno okolje. V okviru vaj popravite in dopolnite obstoječo implementacijo spletne trgovine, kot zahtevajo navodila. Med delom smiselno uveljavljajte spremembe v lokalnem in oddaljenem repozitoriju!
 
 ## Naloga
 
