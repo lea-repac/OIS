@@ -542,7 +542,7 @@
                     <!-- Skupna vrednost brez DDV -->
                     <D_5025>389</D_5025>
                     <!-- BT-109: The total amount of the Invoice without VAT. -->
-                    <D_5004>{{ povzetekRacuna.vsoteOsnovZaDdv.ODGOVOR }}</D_5004>
+                    <D_5004>{{ povzetekRacuna.vsoteOsnovZaDdv.skuapj }}</D_5004>
                 </C_C516>
             </S_MOA>
         </G_SG50>
@@ -552,7 +552,7 @@
                     <!-- Skupna vrednost DDV -->
                     <D_5025>176</D_5025>
                     <!-- BT-110: The total VAT amount for the Invoice. -->
-                    <D_5004>{{ povzetekRacuna.vsoteZneskovDdv.ODGOVOR }}</D_5004>
+                    <D_5004>{{ povzetekRacuna.vsoteZneskovDdv.skupaj }}</D_5004>
                 </C_C516>
             </S_MOA>
         </G_SG50>
@@ -617,14 +617,14 @@
                 <C_C516>
                     <D_5025>125</D_5025>
                     <!-- BT-116: Sum of all taxable amounts subject to a specific VAT category code and VAT category rate (if the VAT category rate is applicable). -->
-                    <D_5004>{{ povzetekRacuna.vsoteOsnovZaDdv.[ODGOVOR] }}</D_5004>
+                    <D_5004>{{ povzetekRacuna.vsoteOsnovZaDdv.[22] }}</D_5004>
                 </C_C516>
             </S_MOA>
             <S_MOA>
                 <C_C516>
                     <D_5025>124</D_5025>
                     <!-- BT-117: The total VAT amount for a given VAT category. -->
-                    <D_5004>{{ povzetekRacuna.vsoteZneskovDdv.[ODGOVOR] }}</D_5004>
+                    <D_5004>{{ povzetekRacuna.vsoteZneskovDdv.[22] }}</D_5004>
                 </C_C516>
             </S_MOA>
         </G_SG52>

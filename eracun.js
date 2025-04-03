@@ -33,10 +33,10 @@ const razmerje_USD_EUR = 0.84;
 const davcnaStopnja = (izvajalec, zanr) => {
     switch (izvajalec) {
         case "Queen":
-        case "ODGOVOR":
+        case "Led Zeppelin":
         case "Kiss":
             return 0;
-        case "ODGOVOR":
+        case "Justin Bieber":
         case "Incognito":
             return 22;
         default:
@@ -45,7 +45,7 @@ const davcnaStopnja = (izvajalec, zanr) => {
     switch (zanr) {
         case "Metal":
         case "Heavy Metal":
-        case "ODGOVOR":
+        case "Easy Listening":
             return 0;
         default:
             return 9.5;
@@ -88,11 +88,11 @@ streznik.get("/", (zahteva, odgovor) => {
     let tabela = "";
     let pogoj = "";
     // odkomentiraj za reševanje 2. naloge
-    /*
-    tabela = ", ODGOVOR";
-    podatek = ", ODGOVOR.Name AS zanr ";
-    pogoj = "AND ODGOVOR.GenreId = Genre.GenreId";
-    */
+
+    tabela = ", Genre";
+    podatek = ", Genre.Name AS zanr ";
+    pogoj = "AND Track.GenreId = Genre.GenreId";
+
     pb.all(
         "SELECT   Track.TrackId AS id, \
                   TRACK.Name AS pesem, \
@@ -114,19 +114,19 @@ streznik.get("/", (zahteva, odgovor) => {
             if (napaka) odgovor.sendStatus(500);
             else {
                 // odkomentiraj za reševanje 2. naloge
-                /*
+
                 for (let i = 0; i < vrstice.length; i++) {
                     vrstice[i].stopnja = davcnaStopnja(
-                        vrstice[i].ODGOVOR,
-                        vrstice[i].ODGOVOR
+                        vrstice[i].izvajalec,
+                        vrstice[i].zanr
                     );
-                    vrstice[i].cena = (vrstice[i].cena * (1 + vrstice[i].ODGOVOR / 100)).toFixed(2);
+                    vrstice[i].cena = (vrstice[i].cena * (1 + vrstice[i].stopnja / 100)).toFixed(2);
                     
                     // 3. naloga
-                    vrstice[i].ODGOVOR = "background-ODGOVOR: ODGOVOR-gradient(to ODGOVOR, lightgray, " +
+                    vrstice[i].ozadje = "background-image: linear-gradient(to right, lightgray, " +
                                          "white, whitesmoke, white, " + pridobiBarvoZanra(vrstice[i].zanr) + ");";
                 }
-                */
+
                 odgovor.render("seznam", {seznamPesmi: vrstice});
             }
         }
@@ -161,11 +161,11 @@ const pesmiIzKosarice = (zahteva, povratniKlic) => {
         let tabela = "";
         let pogoj = "";
         // odkomentiraj za reševanje 1. naloge
-        /*
-        podatek = "Genre.ODGOVOR AS zanr,";
-        tabela = ", ODGOVOR";
-        pogoj = "Track.ODGOVOR = Genre.ODGOVOR AND ";
-         */
+
+        podatek = "Genre.Name AS zanr,";
+        tabela = ", Genre";
+        pogoj = "Track.GenreId = Genre.GenreId AND ";
+
 
         // Sicer dostopaj do podatkovne baze in pridobi podrobnosti
         pb.all(
@@ -186,14 +186,14 @@ const pesmiIzKosarice = (zahteva, povratniKlic) => {
                 if (napaka) povratniKlic(false);
                 else {
                     // odkomentiraj za reševanje 2. naloge
-                    /*
+
                     for (let i = 0; i < vrstice.length; i++) {
                         vrstice[i].stopnja = davcnaStopnja(
-                            vrstice[i].ODGOVOR.split(" (")[1].split(")")[0],
-                            vrstice[i].ODGOVOR
+                            vrstice[i].opisArtikla.split(" (")[1].split(")")[0],
+                            vrstice[i].zanr
                         );
                     }
-                    */
+
                     povratniKlic(vrstice);
                 }
             }
@@ -220,37 +220,37 @@ streznik.get("/izpisiRacun/:oblika", (zahteva, odgovor) => {
             );
         } else {
             // odkomentiraj za reševanje 1. naloge
-            /*
+
             let zanri = {};
             let steviloPesmi = 0;
             for (let i = 0; i < pesmi.length; i++) {
                 // Število pesmi po žanrih
-                if (pesmi[i].zanr in zanri) ODGOVOR[pesmi[i].zanr]++;
-                else zanri[pesmi[i].zanr] = ODGOVOR;
+                if (pesmi[i].zanr in zanri) zanri[pesmi[i].zanr]++;
+                else zanri[pesmi[i].zanr] = 1;
                 // Število pesmi izbranih izvajalcev
                 if (
                     pesmi[i].opisArtikla.endsWith("(Iron Maiden)") ||
                     pesmi[i].opisArtikla.endsWith("(Body Count)")
                 )
-                    ODGOVOR++;
+                    steviloPesmi++;
             }
             let skupniPopust =
-                (pesmi.length >= 5 ? ODGOVOR : 0) + // +20 % za več kot 5 pesmi
-                (steviloPesmi > 1 ? ODGOVOR : 0) + // +5 % za več pesmi izbranih izvajalcev
+                (pesmi.length >= 5 ? 20 : 0) + // +20 % za več kot 5 pesmi
+                (steviloPesmi > 1 ? 5 : 0) + // +5 % za več pesmi izbranih izvajalcev
                 (new Date().getMinutes() <= 30 ? 1 : 0); // +1 % za prvo polovico ure
             // Nakup več pesmi istega žanra
             for (let zanr in zanri) {
-                if (zanri[zanr] >= ODGOVOR) {
+                if (zanri[zanr] >= 3) {
                     skupniPopust += 10; // +10 % za več kot 3 pesmi žanra
                     break;
                 }
             }
-            */
+
 
             let povzetek = {
                 vsotaSPopustiInDavki: 0,
-                vsoteZneskovDdv: {0: 0, 9.5: 0, ODGOVOR: 0, skupaj: 0},
-                vsoteOsnovZaDdv: {ODGOVOR: 0, 9.5: 0, 22: 0, skupaj: 0},
+                vsoteZneskovDdv: {0: 0, 9.5: 0, 22: 0, skupaj: 0},
+                vsoteOsnovZaDdv: {0: 0, 9.5: 0, 22: 0, skupaj: 0},
                 vsotaVrednosti: 0,
                 vsotaPopustov: 0,
             };
@@ -261,8 +261,8 @@ streznik.get("/izpisiRacun/:oblika", (zahteva, odgovor) => {
                 pesem.vrednost = pesem.kolicina * pesem.cena;
                 pesem.davcnaStopnja = 22;
                 // odkomentiraj za reševanje 2. naloge
-                // pesem.davcnaStopnja = pesem.ODGOVOR;
-                pesem.popustStopnja = pesem.popust + ODGOVOR;
+                pesem.davcnaStopnja = pesem.stopnja;
+                pesem.popustStopnja = pesem.popust + skupniPopust;
                 pesem.popust =
                     pesem.kolicina * pesem.cena * (pesem.popustStopnja / 100);
                 pesem.osnovaZaDdv = pesem.vrednost - pesem.popust;
@@ -270,9 +270,9 @@ streznik.get("/izpisiRacun/:oblika", (zahteva, odgovor) => {
                 pesem.osnovaZaDdvInDdv = pesem.osnovaZaDdv + pesem.ddv;
 
                 povzetek.vsotaSPopustiInDavki += pesem.osnovaZaDdv + pesem.ddv;
-                povzetek.vsoteZneskovDdv[pesem.davcnaStopnja] += pesem.ODGOVOR;
+                povzetek.vsoteZneskovDdv[pesem.davcnaStopnja] += pesem.ddv;
                 povzetek.vsoteZneskovDdv["skupaj"] += pesem.ddv;
-                povzetek.vsoteOsnovZaDdv[pesem.davcnaStopnja] += pesem.ODGOVOR;
+                povzetek.vsoteOsnovZaDdv[pesem.davcnaStopnja] += pesem.osnovaZaDdv;
                 povzetek.vsoteOsnovZaDdv["skupaj"] += pesem.osnovaZaDdv;
                 povzetek.vsotaVrednosti += pesem.vrednost;
                 povzetek.vsotaPopustov += pesem.popust;

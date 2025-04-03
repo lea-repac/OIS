@@ -5,7 +5,7 @@ const premakniPesemIzSeznamaVKosarico = (id, naziv, izvajalec, cena, stopnja, az
 
     let ddv = "";
     // odkomentiraj za reševanje 2. naloge
-    // ddv = "(<span class='stopnja'>" + ODGOVOR + "</span> %)";
+    ddv = "(<span class='stopnja'>" + stopnja + "</span> %)";
 
     // Dodaj pesem v desni seznam
     $("#kosarica").append("<div id='" + id + "' class='pesem'> \
@@ -48,12 +48,12 @@ $(document).ready(() => {
         kosarica.forEach((pesem) => {
             let stevilo = 1;
             // odkomentiraj za reševanje 2. naloge
-            // stevilo = ODGOVOR;
+            stevilo = 100;
             premakniPesemIzSeznamaVKosarico(pesem.stevilkaArtikla,
                                             pesem.opisArtikla.split(" (")[0],
                                             pesem.opisArtikla.split(" (")[1].split(")")[0],
                                             (pesem.cena * (1 + pesem.stopnja / stevilo)).toFixed(2),
-                                            pesem.ODGOVOR,
+                                            pesem.stopnja,
                                             false);
         });
     });
@@ -66,8 +66,8 @@ $(document).ready(() => {
         premakniPesemIzSeznamaVKosarico(pesem.attr("id"),
                                         pesem.find("button .naziv").text(),
                                         pesem.find("button .izvajalec").text(),
-                                        pesem.find("button .ODGOVOR").text(),
-                                        pesem.find("button .ODGOVOR").text(),
+                                        pesem.find("button .cena").text(),
+                                        pesem.find("button .stopnja").text(),
                                         true);
     });
 
