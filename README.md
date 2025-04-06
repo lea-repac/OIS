@@ -14,7 +14,7 @@ Za vas sta pripravljena dva problema, ki se ukvarjata s **pripravo načrta podat
 
 ### Navodila
 
-Na razgovoru za službo želi potenticalni bodoči delodajalec ugotoviti ali razumete (entitetno-relacijsko) ER načrtovanje. Ker ste še študenti, boste delali na pedagoški domeni in sicer osnovni **pedagoški proces** na fakulteti. Zaposlenemu v podjetju je zmanjkalo časa za dokončanje ER modela, zato ga morate dopolniti na podlagi sledečega opisa.
+Na razgovoru za službo želi potencialni bodoči delodajalec ugotoviti ali razumete (entitetno-relacijsko) ER načrtovanje. Ker ste še študenti, boste delali na pedagoški domeni in sicer osnovni **pedagoški proces** na fakulteti. Zaposlenemu v podjetju je zmanjkalo časa za dokončanje ER modela, zato ga morate dopolniti na podlagi sledečega opisa.
 
 Fakulteto obiskujejo **študenti**, ki lahko poslušajo predmete. Za vsakega študenta se pri vpisu, poleg datuma vpisa, dodeli še ostale osnovne podatke in sicer unikatno vpisno številko, ime, priimek in študentski elektronski naslov. Vsak **predmet** ima opredeljeno enolično šifro predmeta, naziv predmeta in program na kateremu se predmet primarno izvaja. Poleg tega so predmeti ovrednoteni s kreditnimi točkami in se izvajajo v določenem letniku študijskega programa ter prvemu (zimskemu) ali drugemu (poletnemu) semestru. Predmeti se izvajajo v različnih **prostorih** fakultete. Vsak prostor ima svoje ime (npr. predavalnica PR01, laboratorij PR09 idr.), število delovnih mest in se izvajajo ob točno določenih terminih opredeljeni z začetkom ter koncem izvajanja. Predmet izvaja vsaj en, običajno pa več **pedagogov predmeta**, kjer ima pedagog določeno funkcijo, pri čemer ima predmet natanko enega nosilca. **Pedagog** je opredeljen z osnovnimi podatki imenom ter priimkom, funkcija pa s trenutno izvolitvijo v habilitacijo, ki se jo obnavlja na 3 do 5 let. **Habilitacija** je opredeljena s stopnjo izobrazbe (1. za nedokončano osnovno šolo do 8. doktorat znanosti) in nazivom (npr. asistent, docent idr.).
 
@@ -64,4 +64,4 @@ Na zgornji sliki je prikazan tudi poseben primer **Polonce Prekrasni**, ki se me
 
 Polonca je zelo varčno dekle in na dopustu ni veliko zapravljala. Poleg vode, ki je v hotelu brezplačna in jo je pila ves čas dopusta, si je zgolj **2x privoščila 2 dcl jabolčnega soka v baru**. Prvič je bila prijavljena skupaj z družino v sobi **102** in drugič, ko je bila prijavljena z Maksimirjem v sobi **807** (All inclusive paket, kjer je popust 100, t.j. brezplačno). Dopolnite relaciji v tabeli Storitev, ki prikazujejo zapisane podatke v podatkovni bazi za koriščenje storitve pijače:
 * na račun družinske sobe in
-* na račun maksimirjeve sobe.
+* na račun Maksimirjeve sobe.
