@@ -16,18 +16,10 @@ function cakamXSekund(x, povratniKlic) {
         rejectUnauthorized: false
     });
 
-    // na odgovor storitve čakamo 3 sekunde
-    axios.get('https://hub.dummyapis.com/delay?seconds=' + x, {httpsAgent: agent})
-        .then(function (response) {
-            // uspešni odgovor
-            povratniKlic();
-        })
-        .catch(function (error) {
-            // napaka
-            console.log(error);
-        });
-
-
+    // na odgovor 'storitve' čakamo x sekund
+    setTimeout(function(){
+        povratniKlic();
+    }, x * 1000);
 }
 
 streznik.get("/nalaganje-vsebine", (zahteva, odgovor) => {

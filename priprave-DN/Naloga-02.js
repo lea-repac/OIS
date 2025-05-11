@@ -25,8 +25,8 @@ streznik.get("/izracun", (zahteva, odgovor) => {
     });
 
     function funkcija3(povratniKlic) {
-        // na odgovor storitve čakamo 5 sekund
-        axios.get('https://hub.dummyapis.com/delay?seconds=5', {httpsAgent: agent})
+        // na odgovor storitve čakamo okvirno polovico sekunde
+        axios.get('https://fakestoreapi.com/users', {httpsAgent: agent})
             .then(function (response) {
                 // uspešni odgovor
                 povratniKlic(-7);
@@ -34,6 +34,7 @@ streznik.get("/izracun", (zahteva, odgovor) => {
             .catch(function (error) {
                 // napaka
                 console.log(error);
+                povratniKlic(-7);
             });
 
     }

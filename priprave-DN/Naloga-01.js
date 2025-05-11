@@ -29,9 +29,9 @@ streznik.get("/zaporedje", (zahteva, odgovor) => {
     });
 
     function funkcija3(povratniKlic) {
-        // na odgovor storitve čakamo 5 sekund
+        // na odgovor storitve čakamo okvirno polovico sekunde
         // ( Dokumentacija knjižnice axios: https://www.npmjs.com/package/axios )
-        axios.get('https://hub.dummyapis.com/delay?seconds=5', {httpsAgent: agent})
+        axios.get('https://fakestoreapi.com/users', {httpsAgent: agent})
             .then(function (response) {
                 // uspešni odgovor
                 povratniKlic("sneg");
