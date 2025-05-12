@@ -39,6 +39,7 @@ streznik.get("/zaporedje", (zahteva, odgovor) => {
             .catch(function (error) {
                 // napaka
                 console.log(error);
+                povratniKlic("sneg");
             });
     }
 
