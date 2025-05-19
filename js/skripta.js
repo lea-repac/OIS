@@ -105,7 +105,7 @@ const ustvariEthereumDenarnico = async () => {
             let naslovDenarnice = denarnicaUstvarjenegaRacuna.address;
             $("#zasebni-kljuc-ustvarjen").val(zasebniKljuc);
             prazneDenarnice.push(naslovDenarnice);
-            prijavaEthereumDenarnice(naslovDenarnice, zasebniKljuc);
+            prijavaEthereumDenarnice(naslovDenarnice, ODGOVOR);
         } else {
             $("#napakaPrijava").html(
                 "<div class='alert alert-danger' role='alert'>" +
@@ -162,7 +162,7 @@ const prijavaEthereumDenarnice = async (denarnica, zasebniKljuc) => {
         // ob uspešni prijavi računa
         if (rezultat && preveriDenarnico(rezultat.address)) {
             let denarnicaPrijava = rezultat.address;
-            $("#eth-racun").html(okrajsajNaslov(ODGOVOR) + "<br>(denarnica odklenjena)");
+            $("#eth-racun").html(okrajsajNaslov(denarnicaPrijava) + "<br>(denarnica odklenjena)");
 
             // prikažemo celotni naslov ob premiku z miško na HTML element z enoličnim identifikatorjem 'eth-racun'
             $("#eth-racun").attr("title", denarnicaPrijava);
