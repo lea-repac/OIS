@@ -30,19 +30,22 @@ V okviru tega predmeta in posledično vaj bomo uporabljali lastno privatno verig
 5. V datoteko `dapp/hardhat.config.js` dodamo še osnovne nastavitve računov in sicer _10 računov_, ki imajo privzeto _100 ETH_ sredstev:
     ~~~~ {.javascript}
     require("@nomicfoundation/hardhat-toolbox");
-    /** @type import('hardhat/config') HardhatUserConfig */
-      solidity: "0.8.28",
-      networks: {
-        hardhat: {
-          accounts: {
-            count: 10,
-            accountsBalance: "100000000000000000000",
-          }
-        },
-        localhost: {
-          url: "http://127.0.0.1:8545",
-      },
-    },
+    
+    /** @type import('hardhat/config').HardhatUserConfig */
+    module.exports = {
+        solidity: "0.8.28",
+        networks: {
+            hardhat: {
+                accounts: {
+                    count: 10,
+                    accountsBalance: "100000000000000000000",
+                }
+            },
+            localhost: {
+                url: "http://127.0.0.1:8545",
+            }
+        }
+    };
     ~~~~
 6. Lokalno vozlišče zaženemo z naslednjim ukazom v ukazni vrstici:
     ~~~ {.bash}
