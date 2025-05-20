@@ -210,7 +210,7 @@ const prikaziKandidateZaDonacije = async (inicializacija) => {
             <span class='text-muted'>Naslov: </span> <span title='" + racun + "' naslov='" + racun + "'>\
             " + okrajsajNaslov(racun) + " <span class='text-muted'>Stanje: </span> \
             " + parseFloat(ethers.formatEther(stanje)).toFixed(2) + "ETH</span></br>");
-        stRacunov = i;
+        stRacunov = parseInt(i) + 1;
     }
 
     for (let i in prazneDenarnice) {
@@ -222,7 +222,7 @@ const prikaziKandidateZaDonacije = async (inicializacija) => {
             onemogoci = "disabled";
 
         $("#kandidati").append(
-            parseInt(stRacunov++) + ". <input type='radio' name='naslov' value='" + racun + "' " + onemogoci + "> \
+            parseInt(++stRacunov) + ". <input type='radio' name='naslov' value='" + racun + "' " + onemogoci + "> \
             <span class='text-muted'>Naslov: </span> <span title='" + racun + "' naslov='" + racun + "'>\
             " + okrajsajNaslov(racun) + " <span class='text-muted'>Stanje: </span> \
             0.00 ETH</span></br>");
