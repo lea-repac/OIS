@@ -5,6 +5,8 @@ let web3ponudnik;
 let razpolozljiveDenarnice = [];
 // denarnice, ki nimajo ETH sredstev
 let prazneDenarnice = [];
+// naslov trenutno prijavljene denarnice
+let prijavljenaDenarnica = "";
 
 /**
  * Funkcija za donacijo Ethereum kriptovalute
@@ -13,7 +15,7 @@ const donirajEthereum = async () => {
     try {
         var prejemnikDenarnica = $("#izbrana-denarnica").val();
 
-        var posiljateljObjekt = await web3ponudnik.ODGOVOR();
+        var posiljateljObjekt = await web3ponudnik.ODGOVOR(prijavljenaDenarnica);
 
 
         let rezultat = await posiljateljObjekt.ODGOVOR({
@@ -166,6 +168,7 @@ const prijavaEthereumDenarnice = async (denarnica, zasebniKljuc) => {
 
             // prikažemo celotni naslov ob premiku z miško na HTML element z enoličnim identifikatorjem 'eth-racun'
             $("#eth-racun").attr("title", denarnicaPrijava);
+            prijavljenaDenarnica = denarnicaPrijava;
             prikaziKandidateZaDonacije(false);
             omogociAliOnemogociGumbDoniraj();
             $("#napakaPrijava").html("");
