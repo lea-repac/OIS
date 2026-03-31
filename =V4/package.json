@@ -1,0 +1,11 @@
+{
+  "name": "fribox",
+  "version": "0.0.1",
+  "description": "Brezplačna alternativa storitvi Dropbox",
+  "private": true,
+  "ODGOVOR": {
+    "mime-types": "latest",
+    "ODGOVOR": "latest",
+    "fs-extra": "latest"
+  }
+}
